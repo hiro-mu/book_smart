@@ -1,24 +1,36 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## books テーブル
 
-Things you may want to cover:
+| Column             | Type     | Options     |
+| ------------------ | -------- | ----------- |
+| title              | string   | null: false |
+| content            | longtext | null: false |
 
-* Ruby version
+## Association
 
-* System dependencies
+- has_many :highlights
+- has_many :bookmarks
 
-* Configuration
+## highlights テーブル
 
-* Database creation
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| text               | string     | null: false                    |
+| point              | longtext   | null: false                    |
+| book               | references | null: false, foreign_key: true |
 
-* Database initialization
+## Association
 
-* How to run the test suite
+- belongs_to :book
 
-* Services (job queues, cache servers, search engines, etc.)
+## bookmarks テーブル
 
-* Deployment instructions
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| page               | string     | null: false                    |
+| book               | references | null: false                    |
 
-* ...
+## Association
+
+- belongs_to :book
