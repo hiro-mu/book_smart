@@ -10,7 +10,7 @@
 ## Association
 
 - has_many :highlights
-- has_many :bookmarks
+- has_one :bookmark
 
 ## highlights テーブル
 
