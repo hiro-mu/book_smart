@@ -1,0 +1,5 @@
+.text{
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  white-space: pre-wrap;
+}

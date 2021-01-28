@@ -1,5 +1,7 @@
-<div class='text'>
+
   <% @books.each do |book| %>
-    <%= book.title %>
+    <%= link_to book.title, book_path(book) %>
+    <%= image_tag book.image if book.image.attached?%>
   <% end %>
-</div>
+
+<%= link_to "本追加", new_book_path %> 

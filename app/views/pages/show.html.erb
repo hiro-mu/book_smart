@@ -1,0 +1,9 @@
+<%= @book.title %><br>
+<div class='text'>
+  <%= @book.content[@content_s, 1000] %><br>
+  <%= link_to '次のページへ進む', book_page_path(book_id: @book.id, id: (@thispage + 1)) %>
+  <% if @thispage > 1 %>
+  <%= link_to '前のページへ戻る', book_page_path(book_id: @book.id, id: (@thispage - 1)) %>
+  <% end %>
+  <%= link_to 'しおりを挟んでトップページに戻る' %>
+</div>
