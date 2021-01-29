@@ -17,7 +17,8 @@ class PagesController < ApplicationController
   def update
     @book = Book.find(params[:book_id])
     @page = Page.find(@book.page.id)
-    @page.update(pagenum: params[:pagenum])
+    # @page.update(pagenum: params[:pagenum])
+    @page.update(page_update_params)
     redirect_to root_path
   end
   
@@ -25,5 +26,9 @@ class PagesController < ApplicationController
 
   def page_params
     params.require(:page).permit(:pagenum).merge(book_id: params[:book_id])
+  end
+
+  def page_update_params
+    params.permit(:pagenum)
   end
 end
