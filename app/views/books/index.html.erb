@@ -1,7 +1,13 @@
-
-  <% @books.each do |book| %>
-    <%= link_to book.title, book_path(book) %>
-    <%= image_tag book.image if book.image.attached?%>
-  <% end %>
-
+<div class = "book-index">
+  <div class = "book-box">
+    <% @books.each do |book| %>
+      <div class="name">
+        <%= link_to book.title, book_path(book) %>
+      </div>
+      <div class="image">
+        <%= image_tag book.image if book.image.attached? %>
+      </div>
+    <% end %>
+  </div>
+</div>
 <%= link_to "本追加", new_book_path %> 
