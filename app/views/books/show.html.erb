@@ -1,0 +1,7 @@
+<div class='text'>
+  <%= @book.title %><br>
+  <%= image_tag @book.image if @book.image.attached?%>
+  <%= link_to '初めから読む', book_page_path(book_id: @book.id, id: 1) %>
+  <%= link_to '続きから読む', book_page_path(book_id: @book.id, id: @book.page.pagenum) %>
+  <%= link_to 'トップページに戻る' , root_path %>
+</div>
