@@ -17,7 +17,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | text               | string     | null: false                    |
-| point              | longtext   | null: false                    |
+| pagenum            | integer    | null: false                    |
 | book               | references | null: false, foreign_key: true |
 
 ## Association
