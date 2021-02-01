@@ -24,6 +24,17 @@ class PagesController < ApplicationController
     redirect_to root_path
   end
   
+  def load
+    items = Highlight.pluck(:text)
+    render json: { post: items }
+  end
+
+  def delete
+    highlight = Highlight.find_by(text: params[:text])
+    highlight.destroy
+    render json: { post: highlight.text }
+  end
+
   def highlight
     highlight = Highlight.new(page_highlight_params)
     highlight.save
