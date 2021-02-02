@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Page, type: :model do
-  describe 'ページ保存'
+  describe 'ページ保存' do
     before do
       @page = FactoryBot.build(:page)
     end
@@ -25,4 +25,5 @@ RSpec.describe Page, type: :model do
         expect(@page.errors.full_messages).to include("Book must exist") 
       end
     end
+  end
 end
