@@ -3,11 +3,7 @@ class PagesController < ApplicationController
     @book = Book.find(params[:book_id])
     #@content_s:出力するテキストの最初を表す 
     @content_s = 1000 * (params[:id].to_i - 1)
-    #@thispage:現在開いているページ数
-    @thispage = params[:id].to_i
-    #highlightメソッド内で使用
-    @@book_id = @book.id
-    @@pagenum = @thispage
+    @pagenum = params[:id].to_i
   end
 
   def create
@@ -26,11 +22,11 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:pagenum).merge(book_id: params[:book_id])
+    params.require(:page).permit(:pagenum, :book_id)
   end
 
   def page_update_params
-    params.permit(:pagenum)
+    params.permit(:pagenum, :book_id)
   end
 
 end
