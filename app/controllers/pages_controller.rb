@@ -2,11 +2,11 @@ class PagesController < ApplicationController
   def show
     @book = Book.find(params[:book_id])
     @page = @book.page
-    #@content_s:出力するテキストの最初を表す 
+    # @content_s:出力するテキストの最初を表す
     @content_s = 1000 * (params[:id].to_i - 1)
-    #@thispage:現在開いているページ数
+    # @thispage:現在開いているページ数
     @thispage = params[:id].to_i
-    #highlightメソッド内で使用
+    # highlightメソッド内で使用
     @@book_id = @book.id
     @@pagenum = @thispage
   end
@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     @page.update(page_update_params)
     redirect_to root_path
   end
-  
+
   def load
     items = Highlight.pluck(:text)
     render json: { post: items }

@@ -32,4 +32,5 @@
 | book               | references | null: false                    |
 
 ## Association
+
 - belongs_to :book
