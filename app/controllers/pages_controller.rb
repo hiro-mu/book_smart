@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   def show
     @book = Book.find(params[:book_id])
-    @page = @book.page
     #@content_s:出力するテキストの最初を表す 
     @content_s = 1000 * (params[:id].to_i - 1)
     #@thispage:現在開いているページ数
@@ -23,24 +22,6 @@ class PagesController < ApplicationController
     @page.update(page_update_params)
     redirect_to root_path
   end
-  
-  def load
-    items = Highlight.pluck(:text)
-    render json: { post: items }
-  end
-
-  def delete
-    highlight = Highlight.find_by(text: params[:text])
-    highlight.destroy
-    render json: { post: highlight.text }
-  end
-
-  def highlight
-    highlight = Highlight.new(page_highlight_params)
-    highlight.save
-    items = Highlight.pluck(:text)
-    render json: { post: items }
-  end
 
   private
 
@@ -52,7 +33,4 @@ class PagesController < ApplicationController
     params.permit(:pagenum)
   end
 
-  def page_highlight_params
-    params.permit(:text).merge(book_id: @@book_id, pagenum: @@pagenum)
-  end
 end

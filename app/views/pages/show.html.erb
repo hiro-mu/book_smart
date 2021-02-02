@@ -4,10 +4,12 @@
     <%= @book.content[@content_s, 1000] %><br>
   </div>
   <% unless @book.content[@content_s, 1000] == nil %><br>
-    <%= link_to '次のページへ進む', book_page_path(book_id: @book.id, id: (@thispage + 1)) %>
+    <%= link_to '次のページへ進む', book_page_path(book_id: @book.id, id: (@thispage + 1),
+        booknum: @book.id, pagenum: (@thispage + 1)) %>
   <% end %>
   <% if @thispage > 1 %>
-    <%= link_to '前のページへ戻る', book_page_path(book_id: @book.id, id: (@thispage - 1)) %>
+    <%= link_to '前のページへ戻る', book_page_path(book_id: @book.id, id: (@thispage - 1), 
+        booknum: @book.id, pagenum: (@thispage - 1)) %>
   <% end %>
   <% unless Page.exists?(book_id: @book.id) %>
     <%= link_to '新しくしおりを挟む', book_pages_path(page: {pagenum: @thispage}), method: :post %>

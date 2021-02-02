@@ -1,11 +1,8 @@
 const highlight = () => {
 
   // ページ切り替え時にハイライトを読み込む
-  const params = (new URL(document.location)).searchParams;
-  const pageId = params.get('id')
-  const bookId = params.get('book_id')
   const XHR = new XMLHttpRequest();
-  XHR.open("GET", `/pages/load?book_id=${bookId}&id=${pageId}`, true);
+  XHR.open("GET", '/highlights/load', true);
   XHR.responseType = "json";
   XHR.send();
   XHR.onload = () => {
@@ -27,10 +24,10 @@ const highlight = () => {
   $(document).on('click', '.highlight-text', function(){
     let clickedStr = $(this).text();
     const params = (new URL(document.location)).searchParams;
-    const pageId = params.get('id')
-    const bookId = params.get('book_id')
+    const pageNum = params.get('pagenum')
+    const bookNum = params.get('booknum')
     const XHR = new XMLHttpRequest();
-    XHR.open("GET", `/pages/delete?book_id=${bookId}&id=${pageId}&text=${clickedStr}`, true);
+    XHR.open("GET", `/highlights/delete?booknum=${bookNum}&pagenum=${pageNum}&text=${clickedStr}`, true);
     XHR.responseType = "json";
     XHR.send();
     XHR.onload = () => {
@@ -55,11 +52,9 @@ const highlight = () => {
       if(selectedStr !== '' && selectedStr !== '\n'){
         const params = (new URL(document.location)).searchParams;
         const pageNum = params.get('pagenum')
-        const bookId = params.get('book_id')
-        console.log(pageNum)
-        console.log(bookId)
+        const bookNum = params.get('booknum')
         const XHR = new XMLHttpRequest();
-        XHR.open("GET", `/pages/highlight?book_id=${bookId}&pagenum=${pageNum}&text=${selectedStr}`, true);
+        XHR.open("GET", `/highlights/create?book_id=${bookNum}&pagenum=${pageNum}&text=${selectedStr}`, true);
         XHR.responseType = "json";
         XHR.send();
         XHR.onload = () => {
