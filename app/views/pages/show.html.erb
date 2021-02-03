@@ -9,9 +9,9 @@
   <% if @pagenum > 1 %>
     <%= link_to '前のページへ戻る', book_page_path(book_id: @book.id, id: (@pagenum - 1)) %>
   <% end %>
-  <% unless Page.exists?(book_id: @book.id) %>
-    <%= link_to '新しくしおりを挟む', book_pages_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post %>
+  <% unless Bookmark.exists?(book_id: @book.id) %>
+    <%= link_to '新しくしおりを挟む', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post %>
   <% else %>
-    <%= link_to 'しおりを挟む', book_page_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put %>
+    <%= link_to 'しおりを挟む', book_bookmark_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put %>
   <% end %>
 </div>
