@@ -9,8 +9,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create(book_params)
-    redirect_to root_path
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -18,6 +22,7 @@ class BooksController < ApplicationController
   end
 
   private
+
   def book_params
     params.require(:book).permit(:title, :content, :image)
   end
