@@ -8,7 +8,7 @@ class BookmarksController < ApplicationController
 
   def update
     @book = Book.find(params[:book_id])
-    @bookmark = Bookmark.find(@book.bookmark.id)
+    @bookmark = @book.bookmark
     @bookmark.update(bookmark_update_params)
     redirect_to root_path
   end

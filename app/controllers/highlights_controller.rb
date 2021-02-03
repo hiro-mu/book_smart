@@ -7,14 +7,11 @@ class HighlightsController < ApplicationController
   def delete
     highlight = Highlight.find_by(text: params[:text])
     highlight.destroy
-    render json: { post: highlight.text }
   end
 
   def create
     highlight = Highlight.new(page_highlight_params)
     highlight.save
-    items = Highlight.pluck(:text)
-    render json: { post: items }
   end
 
   private
