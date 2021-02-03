@@ -10,7 +10,7 @@
 ## Association
 
 - has_many :highlights
-- has_one :page
+- has_one :bookmark
 
 ## highlights テーブル
 
@@ -24,7 +24,7 @@
 
 - belongs_to :book
 
-## pages テーブル
+## bookmarks テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
