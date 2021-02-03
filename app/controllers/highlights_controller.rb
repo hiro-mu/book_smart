@@ -1,4 +1,5 @@
 class HighlightsController < ApplicationController
+  
   def load
     items = Highlight.pluck(:text)
     render json: { post: items }

@@ -1,9 +1,9 @@
 <%= @book.title %><br>
 <div class='text'>
   <div class='text-content'>
-    <%= @book.content[@content_s, 1000] %><br>
+    <%= @book.content[1000 * (@pagenum - 1), 1000] %><br>
   </div>
-  <% unless @book.content[@content_s, 1000] == nil %><br>
+  <% unless @book.content[1000 * (@pagenum - 1), 1000] == nil %><br>
     <%= link_to '次のページへ進む', book_page_path(book_id: @book.id, id: (@pagenum + 1)) %>
   <% end %>
   <% if @pagenum > 1 %>

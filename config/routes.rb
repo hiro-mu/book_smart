@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'books#index'
   resources :books, only: [:new, :create, :show] do
-    resources :pages, only: [:show, :create, :update]
+    resources :pages, only: [:show]
     resources :bookmarks, only: [:create, :update]
   end
   get 'highlights/create', to: 'highlights#create'
