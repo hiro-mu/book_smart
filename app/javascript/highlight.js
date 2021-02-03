@@ -11,7 +11,6 @@ const highlight = () => {
       return null;
     }
     const item = XHR.response.post;
-    console.log(item)
     for (let i=0, len=item.length; i<len; i++){
       const txt = $('.text-content').html();
       $('.text-content').html(
@@ -31,8 +30,8 @@ const highlight = () => {
   $('.text-content').on('mouseup', function(){
     let selectedStr;
     if(window.getSelection){
-      selectedStr = window.getSelection().toString();
-      if(selectedStr !== '' && selectedStr !== '\n'){
+      selectedStr = window.getSelection().toString().trim();
+      if(selectedStr !== '' && !(selectedStr.includes('\n'))){
         const XHR = new XMLHttpRequest();
         XHR.open("GET", `/highlights/create?book_id=${bookId}&pagenum=${pageNum}&text=${selectedStr}`, true);
         XHR.send();
