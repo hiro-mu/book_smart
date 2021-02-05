@@ -1,20 +1,42 @@
-<div class='text'>
-  <% if @pagenum ==1 %>
-    <%= @book.title %><br>
-  <% end %>
-
-  <div class='text-content'>
-    <%= @book.content[1000 * (@pagenum - 1), 1000] %><br>
+<%= render "shared/header" %>
+<div class='page-text'>
+  <div class='page-text-contents'>
+    <div class='page-text-content'>
+    <% if @pagenum ==1 %>
+      <%= @book.title %><br>
+    <% end %>
+      <%= @book.content[1000 * (@pagenum - 1), 1000] %><br>
+    </div>
   </div>
-  <% unless @book.content[1000 * (@pagenum - 1), 1000].length < 1000 %><br>
-    <%= link_to '次のページへ進む', book_page_path(book_id: @book.id, id: (@pagenum + 1)) %>
-  <% end %>
-  <% if @pagenum > 1 %>
-    <%= link_to '前のページへ戻る', book_page_path(book_id: @book.id, id: (@pagenum - 1)) %>
-  <% end %>
-  <% unless Bookmark.exists?(book_id: @book.id) %>
-    <%= link_to '新しくしおりを挟む', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post %>
-  <% else %>
-    <%= link_to 'しおりを挟む', book_bookmark_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put %>
-  <% end %>
+
+  <div class='page-list-menu'>
+    <% unless @book.content[1000 * (@pagenum - 1), 1000].length < 1000 %><br>
+      <div class='next-page'>
+        <%= link_to image_tag('next_icon.png', size:'28x28'), book_page_path(book_id: @book.id, id: (@pagenum + 1)) %>
+      </div>
+    <% end %>
+    <% if @pagenum > 1 %>
+      <div class='back-page'>
+        <%= link_to image_tag('back_icon.png', size:'28x28'), book_page_path(book_id: @book.id, id: (@pagenum - 1)) %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class='page-bookmark-menu'>
+    <% unless Bookmark.exists?(book_id: @book.id) %>
+    <div class='bookmark-image'>
+      <%= image_tag 'bookmark', class: 'bookmark-icon'%>
+    </div>
+    <div class='bookmark-message'>
+      <%= link_to '新しくしおりを挟む', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post, class:"link-to" %>
+    </div>
+    <% else %>
+    <div class='bookmark-image'>
+      <%= image_tag 'bookmark', class: 'bookmark-icon' %>
+    </div>
+    <div class='bookmark-message'>
+      <%= link_to 'しおりを挟む', book_bookmark_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put, class:"link-to" %>
+    </div>
+    <% end %>
+  </div>
 </div>

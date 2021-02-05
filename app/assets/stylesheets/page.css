@@ -1,0 +1,39 @@
+.page-text-contents {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 600px;
+  padding: 10px 0;
+}
+
+.page-text-content {
+  writing-mode: vertical-rl;
+  white-space: pre-line;
+  border: solid;
+  padding: 10px;
+}
+.page-text {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.page-list-menu {
+  width:50%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.page-bookmark-menu {
+  display: flex;
+  justify-content: center;
+}
+
+.bookmark-icon {
+  margin: auto;
+}
+
+.bookmark-message {
+  padding-left: 20px;
+}

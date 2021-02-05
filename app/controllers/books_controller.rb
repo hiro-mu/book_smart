@@ -19,8 +19,10 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @pagenum = @book.bookmark.pagenum
-    @summary = exec(@book.content[1000 * (@pagenum - 1), 400])
+    if Bookmark.exists?(book_id: @book.id)
+      @pagenum = @book.bookmark.pagenum
+      @summary = exec(@book.content[1000 * (@pagenum - 1), 300])
+    end
   end
 
   private
