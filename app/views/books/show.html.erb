@@ -1,7 +1,35 @@
-<div class='text'>
-  <%= @book.title %><br>
-  <%= image_tag @book.image if @book.image.attached?%>
-  <%= link_to '初めから読む', book_page_path(book_id: @book.id, id: 1) %>
-  <%= link_to '続きから読む', book_page_path(book_id: @book.id, id: @book.bookmark.pagenum) if Bookmark.exists?(book_id: @book.id) %>
-  <%= link_to 'トップページに戻る' , root_path %>
+<%= render "shared/header" %>
+<div class='main-show'>
+  <div class='book-list-show'>
+    <div class='list-show'>
+      <div class="book-image-content">
+      <%if @book.image.attached? %>
+        <%= image_tag @book.image, class:"book-image"%>
+      <% else %>
+        <%= image_tag 'png.png', class:"book-image"%>
+      <% end %>
+      </div>
+      <div class="book-title">
+        <%= @book.title %>
+      </div>
+    </div>
+  </div>
+  <div class='book-list-menu'>
+    <div class='book-first-list'>
+      <%= link_to '初めから読む', book_page_path(book_id: @book.id, id: 1), class:"link-to" %>
+    </div>
+    <% if Bookmark.exists?(book_id: @book.id) %>
+    <div class='book-continued-list'> 
+      <%= link_to '続きから読む', book_page_path(book_id: @book.id, id: @book.bookmark.pagenum), class:"link-to" %>
+    </div>
+    <% end %>
+  </div>
+  <% if Bookmark.exists?(book_id: @book.id) %>
+  <div class='summary'>
+    <div class='summary-message'>
+      <%= image_tag('writing_icon') %>続きの要約はこちら<br>
+      <%= @summary %>
+    </div>
+  </div>
+  <% end %>
 </div>

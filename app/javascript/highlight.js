@@ -12,8 +12,8 @@ const highlight = () => {
     }
     const item = XHR.response.post;
     for (let i=0, len=item.length; i<len; i++){
-      const txt = $('.text-content').html();
-      $('.text-content').html(
+      const txt = $('.page-text-content').html();
+      $('.page-text-content').html(
         txt.replace(item[i],
             `<span style="background-color:#FFF450", class='highlight-text'>${item[i]}</span>`)
       );
@@ -27,7 +27,7 @@ const highlight = () => {
   const pageNum = result[2]
 
   // ハイライトの追加
-  $('.text-content').on('mouseup', function(){
+  $('.page-text-content').on('mouseup', function(){
     let selectedStr;
     if(window.getSelection){
       selectedStr = window.getSelection().toString().trim();

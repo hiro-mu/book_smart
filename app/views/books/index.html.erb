@@ -1,13 +1,23 @@
-<div class = "book-index">
-  <div class = "book-box">
+<%= render "shared/header" %>
+<div class="book-contents">
+  <h2 class="title">あなたの本棚</h2>
+  <ul class='book-lists'>
     <% @books.each do |book| %>
-      <div class="name">
-        <%= link_to book.title, book_path(book) %>
-      </div>
-      <div class="image">
-        <%= image_tag book.image if book.image.attached? %>
-      </div>
+      <li class = "list">
+        <div class="book-image-content">
+          <%if book.image.attached? %>
+            <%= image_tag book.image, class:"book-image"%>
+          <% else %>
+            <%= image_tag 'png.png', class:"book-image"%>
+          <% end %>
+        </div>
+        <div class="book-title">
+          <%= link_to book.title, book_path(book), class:"link-to" %>
+        </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
 </div>
-<%= link_to "本追加", new_book_path %> 
+<div class="new-book-bar">
+  <%= link_to "本追加", new_book_path, class:"link-to" %> 
+</div>
