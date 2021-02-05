@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if Bookmark.exists?(book_id: @book.id)
       @pagenum = @book.bookmark.pagenum
-      @summary = exec(@book.content[1000 * (@pagenum - 1), 300])
+      @summary = exec(@book.content[1000 * (@pagenum - 1), 300])[0].gsub("\r\n", "")
     end
   end
 

@@ -27,7 +27,7 @@
   <% if Bookmark.exists?(book_id: @book.id) %>
   <div class='summary'>
     <div class='summary-message'>
-      <%= image_tag('writing_icon') %>続きの要約はこちら
+      <%= image_tag('writing_icon') %>続きの要約はこちら<br>
       <%= @summary %>
     </div>
   </div>
