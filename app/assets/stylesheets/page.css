@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 600px;
+  height: 80vh;
   padding: 10px 0;
 }
 
@@ -12,6 +12,7 @@
   border: solid;
   padding: 10px;
 }
+
 .page-text {
   margin-left: 40px;
   margin-right: 40px;
@@ -36,4 +37,8 @@
 
 .bookmark-message {
   padding-left: 20px;
+}
+
+p {
+  font-size: 1rem;
 }
