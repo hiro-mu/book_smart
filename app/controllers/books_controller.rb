@@ -21,7 +21,23 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if Bookmark.exists?(book_id: @book.id)
       @pagenum = @book.bookmark.pagenum
-      @summary = exec(@book.content[1000 * (@pagenum - 1), 300])[0].gsub("\r\n", "")
+      # @summary = exec(@book.content[1000 * (@pagenum - 1), 300])[0].gsub("\r\n", "")
+      summary = exec(@book.content[1000 * (@pagenum - 1), 300])
+
+      if summary != nil
+        @summary = summary[0].gsub("\r\n", "")
+      else
+        @summary = "該当の要約はありません。"
+      end
+
+      if @pagenum != 1
+        before_summary = exec(@book.content[1000 * (@pagenum - 2), 300])
+        if before_summary != nil
+          @before_summary = before_summary[0].gsub("\r\n", "")
+        else
+          @before_summary = "該当の要約はありません。"
+        end
+      end
     end
   end
 
