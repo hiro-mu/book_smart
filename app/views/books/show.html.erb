@@ -24,12 +24,19 @@
     </div>
     <% end %>
   </div>
-  <% if Bookmark.exists?(book_id: @book.id) %>
+  
   <div class='summary'>
+    <% if @summary != nil %>
     <div class='summary-message'>
       <%= image_tag('writing_icon') %>続きの要約はこちら<br>
       <%= @summary %>
     </div>
+    <% end %>
+    <% if @before_summary != nil %>
+    <div class='summary-message'>
+      <%= image_tag('writing_icon') %>以前の要約はこちら<br>
+      <%= @before_summary %>
+    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
