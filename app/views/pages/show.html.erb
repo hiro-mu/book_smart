@@ -9,16 +9,20 @@
     </p>
   </div>
 
+  <h2 class='page-number'>
+    <%= @pagenum %>
+  </h2> 
+
   <div class='page-list-menu'>
     <% unless @book.content[1000 * (@pagenum - 1), 1000].length < 1000 %><br>
-      <div class='next-page'>
-        <%= link_to image_tag('next_icon.png', size:'28x28'), book_page_path(book_id: @book.id, id: (@pagenum + 1)) %>
-      </div>
+    <div class='next-page'>
+      <%= link_to image_tag('next_icon.png', size:'28x28'), book_page_path(book_id: @book.id, id: (@pagenum + 1)) %>
+    </div>
     <% end %>
     <% if @pagenum > 1 %>
-      <div class='back-page'>
-        <%= link_to image_tag('back_icon.png', size:'28x28'), book_page_path(book_id: @book.id, id: (@pagenum - 1)) %>
-      </div>
+    <div class='back-page'>
+      <%= link_to image_tag('back_icon.png', size:'28x28'), book_page_path(book_id: @book.id, id: (@pagenum - 1)) %>
+    </div>
     <% end %>
   </div>
 
@@ -28,15 +32,40 @@
       <%= image_tag 'bookmark', class: 'bookmark-icon'%>
     </div>
     <div class='bookmark-message'>
-      <%= link_to '新しくしおりを挟む', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post, class:"link-to" %>
+      <%= link_to '新しくしおりを挟む', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post, class:"link-to", id:"bookmark" %>
     </div>
     <% else %>
     <div class='bookmark-image'>
       <%= image_tag 'bookmark', class: 'bookmark-icon' %>
     </div>
     <div class='bookmark-message'>
-      <%= link_to 'しおりを挟む', book_bookmark_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put, class:"link-to" %>
+      <%= link_to 'しおりを挟む', book_bookmark_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put, class:"link-to", id:"bookmark", href: "#modal01" %>
     </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="modal" id="modal01">
+  <div class="overLay modalClose"></div>
+  <div class="inner">
+    <% if Bookmark.exists?(book_id: @book.id) %>
+    <% todaypages = @pagenum - @book.bookmark.pagenum %>
+    <% else %>
+    <% todaypages = @pagenum %>
+    <% end %>
+    P.<%= @pagenum %>にしおりを挟みました<br>
+    <% if todaypages > 0 %>
+    今日は<%= todaypages %>ページ読みました！<br>
+    <% end %>
+    <% if todaypages >= 10 %>
+    たくさん読みましたね！さすがです&#x1f973; &#x1f973; &#x1f973;<br>
+    <% else %>
+    お疲れさま！！<br>
+    <% end %>
+    <% unless Bookmark.exists?(book_id: @book.id) %>
+    <%= link_to 'あなたの本棚に戻る', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post, class:"modalClose" %>
+    <% else %>
+    <%= link_to 'あなたの本棚に戻る', book_bookmark_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put, class:"modalClose" %>
     <% end %>
   </div>
 </div>
