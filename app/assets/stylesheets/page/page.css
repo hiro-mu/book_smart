@@ -11,6 +11,8 @@
   white-space: pre-line;
   border: solid;
   padding: 10px;
+  text-align: justify;
+  text-justify: inter-ideograph;
 }
 
 .page-text {
@@ -40,5 +42,5 @@
 }
 
 p {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }

@@ -21,15 +21,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if Bookmark.exists?(book_id: @book.id)
       @pagenum = @book.bookmark.pagenum
-      # @summary = exec(@book.content[1000 * (@pagenum - 1), 300])[0].gsub("\r\n", "")
       summary = exec(@book.content[1000 * (@pagenum - 1), 300])
-
       if summary != nil
         @summary = summary[0].gsub("\r\n", "")
       else
         @summary = "該当の要約はありません。"
       end
-
       if @pagenum != 1
         before_summary = exec(@book.content[1000 * (@pagenum - 2), 300])
         if before_summary != nil
@@ -38,6 +35,7 @@ class BooksController < ApplicationController
           @before_summary = "該当の要約はありません。"
         end
       end
+      @keywords = keyword(@book.content[1000 * (@pagenum - 1), 300])
     end
   end
 
@@ -78,5 +76,14 @@ class BooksController < ApplicationController
       :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
         http.request(req)
       end
+  end
+
+  def keyword(document)
+    require 'cotoha'
+    client_id = ENV["COTOHA_API_ID"]
+    client_secret = ENV["COTOHA_API_SECRET_KET"]
+    client = Cotoha::Client.new(client_id: client_id, client_secret: client_secret)
+    client.create_access_token
+    client.keywords(document: document)
   end
 end

@@ -25,6 +25,15 @@
     <% end %>
   </div>
   
+  <div class='keyword'>
+    <div class='keyword-message'>
+      <% if @keywords != nil %>
+        <%= image_tag('writing_icon') %>続きのキーワードはこちら<br>
+        <% @keywords["result"].each_with_index do |keyword, i| %>
+          <%= i+1 %>位.<%= keyword["form"] %><br>
+        <% end %>
+      <% end %>
+    </div>
   <div class='summary'>
     <% if @summary != nil %>
     <div class='summary-message'>
