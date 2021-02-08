@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     searcher.key = api_key
     query = params.permit(:search)
     results = searcher.list_cses(q: query, cx: cse_id)
-    items = results.items
-    pp items.map {|item| { title: item.title, link: item.link} }
+    @items = results.items
+    @query = query[:search]
   end
 end
