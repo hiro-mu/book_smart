@@ -1,0 +1,19 @@
+<%= render "shared/header" %>
+<div class="search-results">
+  <div class="search-message">
+    <%= image_tag('writing_icon')%>検索結果はこちら<br>
+    <span class="mgr-10">検索ワード：</span>~<%= @query %>~<br>
+  </div>
+  <div class="search-result">
+    <% if @items != nil %>
+      <% @items.each_with_index do |item, i| %>
+        <span class="mgr-10"><%= i+1 %>.</span>
+        <span class="mgr-10"><%= item.title %></span>
+        <%= link_to 'このページへ移動する(外部ページ)', item.link, class:"webpage-link" %><br>
+      <% end %>
+    <% else %>
+    <br>Webページは見つかりませんでした。<br>
+    <% end %>
+  </div>
+  <%= link_to "元のページに戻る", book_page_path, class:"link-to" %>
+</div>
