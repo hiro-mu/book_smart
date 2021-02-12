@@ -1,0 +1,35 @@
+<%= render "shared/header" %>
+
+<div class="contents row">
+  <div class="container">
+    <h2>Sign_up</h2>
+    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+
+      <%= render partial:'shared/error_messages', locals: { model: @user } %>
+      
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_area :name, id: "name", placeholder:"例) 山田太郎" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, id: "email", autofocus: true, placeholder:"PC・携帯どちらでも可" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, id: "password", autocomplete: "off", placeholder:"6字以上の英数字" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, id: "password_confirmation", autocomplete: "off", placeholder:"同じパスワードを入力してください" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+  </div>
+</div>
