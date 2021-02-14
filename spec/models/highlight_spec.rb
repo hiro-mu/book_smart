@@ -30,6 +30,12 @@ RSpec.describe Highlight, type: :model do
         @highlight.valid?
         expect(@highlight.errors.full_messages).to include('Book must exist')
       end
+
+      it 'user_idについての情報がないと保存できない' do
+        @highlight.user = nil
+        @highlight.valid?
+        expect(@highlight.errors.full_messages).to include('User must exist')
+      end
     end
   end
 end

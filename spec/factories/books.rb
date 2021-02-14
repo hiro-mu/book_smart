@@ -6,5 +6,6 @@ FactoryBot.define do
     after(:build) do |book|
       book.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end
+    association :user
   end
 end

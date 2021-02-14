@@ -24,6 +24,12 @@ RSpec.describe Bookmark, type: :model do
         @bookmark.valid?
         expect(@bookmark.errors.full_messages).to include("Book must exist")
       end
+
+      it 'user_idについての情報がないと保存できない' do
+        @bookmark.user = nil
+        @bookmark.valid?
+        expect(@bookmark.errors.full_messages).to include('User must exist')
+      end
     end
   end
 end
