@@ -1,3 +1,44 @@
+/* header */
+.page-header {
+  background-color: rgb(4, 223, 150);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 40px;
+  color: white;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+.header-menu {
+  text-decoration: none;
+  display: flex;
+}
+
+.user-link-to {
+  text-decoration: none;
+  color:white;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.user-lists li {
+  color: white;
+  font-size: 20px;
+  margin-right: 10px;
+}
+/* header */
+
 .mgr-10 {
   margin-right : 10px;
 }

@@ -16,7 +16,7 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:page).permit(:pagenum, :book_id)
+    params.require(:page).permit(:pagenum, :book_id).merge(user_id: current_user.id)
   end
 
   def bookmark_update_params

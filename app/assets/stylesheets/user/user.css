@@ -1,16 +1,4 @@
-.page-header {
+.container {
   display: flex;
-  justify-content: space-between;
-}
-
-.header-menu {
-  text-decoration: none;
-  display: flex;
-}
-
-.user-link-to {
-  text-decoration: none;
-  color:white;
-  font-size: 20px;
-  margin-right: 20px;
+  justify-content: center;
 }

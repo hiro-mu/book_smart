@@ -1,12 +1,14 @@
 <%= render "shared/header" %>
 
 <div class="contents row">
+  <div class="container-title">
+    <h2>新規登録</h2>
+  </div>
   <div class="container">
-    <h2>Sign_up</h2>
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
 
       <%= render partial:'shared/error_messages', locals: { model: @user } %>
-      
+
       <div class="field">
         <%= f.label :name %><br />
         <%= f.text_area :name, id: "name", placeholder:"例) 山田太郎" %>
@@ -24,7 +26,7 @@
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, id: "password_confirmation", autocomplete: "off", placeholder:"同じパスワードを入力してください" %>
+        <%= f.password_field :password_confirmation, id: "password_confirmation", autocomplete: "off", placeholder:"同じパスワード" %>
       </div>
 
       <div class="actions">
