@@ -27,7 +27,7 @@
 
 #### `しおりを挟むボタンでブックマークが可能`
 #### `ブックマーク時に現れるメッセージは読書量によって変化→読書意欲が湧く`<br>
-[![Image from Gyazo](https://i.gyazo.com/aa55bcfd402f1298d235fc23b5ff4adf.gif)](https://gyazo.com/aa55bcfd402f1298d235fc23b5ff4adf)
+[![Image from Gyazo](https://i.gyazo.com/49066959a71b7d23d4902d1cf4ff32d2.gif)](https://gyazo.com/49066959a71b7d23d4902d1cf4ff32d2)
 
 #### `ブックマークをした前後の文章の要約と、これから読む場所のキーワードが表示される`<br>
 [![Image from Gyazo](https://i.gyazo.com/0c625efa16d609c96fc2140e988afd45.gif)](https://gyazo.com/0c625efa16d609c96fc2140e988afd45)
