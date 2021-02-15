@@ -19,20 +19,26 @@
 #### `一覧画面(あなたの本棚）へ遷移する`
 #### `本を追加するボタンから、読みたい本の情報を入力`
 #### `追加後は一覧画面へ戻る`<br>
+[![Image from Gyazo](https://i.gyazo.com/7e968d4855e6e69ac9a02a7d171759a0.gif)](https://gyazo.com/7e968d4855e6e69ac9a02a7d171759a0)
+<br>
 
 #### `一覧画面から1冊の本を選択→本の詳細画面へ遷移する`
 #### `初めから読むボタンを押すことで読書ページへ遷移`<br>
 
 #### `しおりを挟むボタンでブックマークが可能`
 #### `ブックマーク時に現れるメッセージは読書量によって変化→読書意欲が湧く`<br>
+[![Image from Gyazo](https://i.gyazo.com/aa55bcfd402f1298d235fc23b5ff4adf.gif)](https://gyazo.com/aa55bcfd402f1298d235fc23b5ff4adf)
 
 #### `ブックマークをした前後の文章の要約と、これから読む場所のキーワードが表示される`<br>
+[![Image from Gyazo](https://i.gyazo.com/0c625efa16d609c96fc2140e988afd45.gif)](https://gyazo.com/0c625efa16d609c96fc2140e988afd45)
 
 #### `読書ページで文字列上をドラッグすることで、ハイライト機能を使うことができる`
 #### `同じ文字列をクリックすることでハイライトを消去することができる`<br>
+[![Image from Gyazo](https://i.gyazo.com/7d1a4d70a2bbedfa2656dfb41e23ab26.gif)](https://gyazo.com/7d1a4d70a2bbedfa2656dfb41e23ab26)
 
 #### `文字列をハイライトにした状態でカーソルを近づけると検索ボタン（虫眼鏡）が表示される`
 #### `虫眼鏡をクリック→該当の文字列をweb検索することができる`
+[![Image from Gyazo](https://i.gyazo.com/7f43a05c7f5f6927d9ca82e8f484891d.gif)](https://gyazo.com/7f43a05c7f5f6927d9ca82e8f484891d)
 
 # 課題解決
 | ユーザーストーリーから考える課題                                                  | 課題解決                                         |
@@ -55,8 +61,8 @@
 | キーワード検索機能 | 文章中の文字列をweb上で検索した結果を検索結果ページで閲覧可能。|
 
 # 追加予定機能
-・読書ページにメモ欄を追加予定。
-・同じ本を他のユーザーと共有できる機能を追加予定。(他ユーザーのハイライトも異なる背景色で表示する)
+- 読書ページにメモ欄を追加予定。
+- 同じ本を他のユーザーと共有できる機能を追加予定。(他ユーザーのハイライトも異なる背景色で表示する)
 
 # 各機能に使用したAPI一覧
 |機能      |概要       |
@@ -66,12 +72,12 @@
 | キーワード検索機能 | Google Custom Search (Google) |
 
 # ローカルでの動作方法
-$ git clone https://github.com/hiro-mu/book_smart.git
-$ cd book_smart
-$ bundle install
-$ rails db:create
-$ rails db:migrate
-$ rails s
+$ git clone https://github.com/hiro-mu/book_smart.git<br>
+$ cd book_smart<br>
+$ bundle install<br>
+$ rails db:create<br>
+$ rails db:migrate<br>
+$ rails s<br>
  http://localhost:3000
 
 # 開発環境
@@ -93,7 +99,7 @@ $ rails s
 | email              | string   | null: false |
 | password           | string   | null: false |
 
-## Association
+### Association
 
 - has_many :books
 - has_many :highlights
@@ -107,7 +113,7 @@ $ rails s
 | content            | longtext   | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
-## Association
+### Association
 
 - has_many :highlights
 - has_one :bookmark
@@ -122,7 +128,7 @@ $ rails s
 | book               | references | null: false, foreign_key: true |
 | user               | references | null: false, foreign_key: true |
 
-## Association
+### Association
 
 - belongs_to :book
 - belongs_to :user
@@ -135,7 +141,7 @@ $ rails s
 | book               | references | null: false, foreign_key: true |
 | user               | references | null: false, foreign_key: true |
 
-## Association
+### Association
 
 - belongs_to :book
 - belongs_to :user
