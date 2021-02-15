@@ -1,4 +1,17 @@
 <header class='page-header'>
-  <%= link_to image_tag('book_icon.png'), root_path %>
-  <%= link_to 'Book Smart', root_path, class:"header-title" %>
+  <div class= 'header-logo'>
+    <%= link_to image_tag('book_icon.png'), root_path %>
+    <%= link_to 'Book Smart', root_path, class:"header-title" %>
+  </div>
+  <div class='header-menu'>
+    <ul class='user-lists'>
+      <% if user_signed_in? %>
+        <li><%= current_user.name %><li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user-link-to" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "user-link-to" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "user-link-to" %></li>
+      <% end %>
+    </ul>
+  </div>
 </header>

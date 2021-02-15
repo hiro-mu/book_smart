@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :show]
+  before_action :move_to_index, only: [:show]
 
   def index
-    @books = Book.all
+    if user_signed_in?
+      @books = current_user.books
+    end
   end
 
   def new
@@ -41,8 +45,15 @@ class BooksController < ApplicationController
 
   private
 
+  def move_to_index
+    @book = Book.find(params[:id])
+    if current_user.id != @book.user_id
+      redirect_to root_path
+    end
+  end
+
   def book_params
-    params.require(:book).permit(:title, :content, :image)
+    params.require(:book).permit(:title, :content, :image).merge(user_id: current_user.id)
   end
   
   def exec(sentence) 

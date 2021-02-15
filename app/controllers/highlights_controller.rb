@@ -1,4 +1,5 @@
 class HighlightsController < ApplicationController
+  before_action :move_to_index
   
   def load
     items = Highlight.pluck(:text)
@@ -17,7 +18,13 @@ class HighlightsController < ApplicationController
 
   private
 
+  def move_to_index
+    unless params[:text]
+      redirect_to root_path
+    end
+  end
+
   def page_highlight_params
-    params.permit(:text, :book_id, :pagenum)
+    params.permit(:text, :book_id, :pagenum).merge(user_id: current_user.id)
   end
 end
