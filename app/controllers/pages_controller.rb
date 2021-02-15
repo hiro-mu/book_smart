@@ -3,7 +3,6 @@ class PagesController < ApplicationController
   before_action :move_to_index, only: [:show]
 
   def show
-    # @book = Book.find(params[:book_id])
     @pagenum = params[:id].to_i
   end
 
