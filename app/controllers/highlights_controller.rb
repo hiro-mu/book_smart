@@ -1,5 +1,5 @@
 class HighlightsController < ApplicationController
-  before_action :move_to_index
+  before_action :move_to_index, except: [:load]
   
   def load
     items = Highlight.pluck(:text)
