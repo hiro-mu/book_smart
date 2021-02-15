@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   private
 
   def move_to_index
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:book_id])
     if current_user.id != @book.user_id
       redirect_to root_path
     end
