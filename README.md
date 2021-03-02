@@ -13,6 +13,9 @@
 # App URL
 
 ### **https://book-smart-33921.herokuapp.com/**
+ID: admin<br>
+Pass: 2222
+
 
 # 利用方法
 
