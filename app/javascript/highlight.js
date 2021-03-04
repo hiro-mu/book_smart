@@ -62,7 +62,6 @@ const highlight = () => {
   // ハイライトの削除
   $(document).on('click', '.highlight-text', function(){
     let clickedStr = $(this).text();
-    console.log(clickedStr)
     const XHR = new XMLHttpRequest();
     XHR.open("GET", `/highlights/delete?book_id=${bookId}&pagenum=${pageNum}&text=${clickedStr}`, true);
     XHR.send();
