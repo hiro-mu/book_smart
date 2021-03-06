@@ -12,7 +12,7 @@
 
 # App URL
 
-### **https://book-smart-33921.herokuapp.com/**
+### **http://3.113.234.17/**
 
 
 # 利用方法
@@ -99,8 +99,14 @@ $ rails db:migrate<br>
 $ rails s<br>
 http://localhost:3000
 
+# 開発PCスペック
+
+- MacBook Air (M1, 2020)
+- メモリ　8GB
+
 # 開発環境
 
+- macOS Big Sur 11.1
 - VScode
 - Ruby 2.6.5
 - Rails 6.0.3.4
