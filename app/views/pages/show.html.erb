@@ -32,7 +32,7 @@
       <%= image_tag 'bookmark', class: 'bookmark-icon'%>
     </div>
     <div class='bookmark-message'>
-      <%= link_to '新しくしおりを挟む', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post, class:"link-to", id:"bookmark" %>
+      <%= link_to '新しくしおりを挟む', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post, class:"link-to", id:"bookmark", href: "#modal01" %>
     </div>
     <% else %>
     <div class='bookmark-image'>
@@ -63,9 +63,9 @@
     お疲れさま！！<br>
     <% end %>
     <% unless Bookmark.exists?(book_id: @book.id) %>
-    <%= link_to 'あなたの本棚に戻る', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post, class:"modalClose" %>
+    <%= link_to 'あなたの本棚に戻る', book_bookmarks_path(page: {book_id: @book.id, pagenum: @pagenum}), method: :post %>
     <% else %>
-    <%= link_to 'あなたの本棚に戻る', book_bookmark_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put, class:"modalClose" %>
+    <%= link_to 'あなたの本棚に戻る', book_bookmark_path(params: {book_id: @book.id, pagenum: @pagenum}), method: :put %>
     <% end %>
   </div>
 </div>
