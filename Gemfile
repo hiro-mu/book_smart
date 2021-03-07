@@ -69,6 +69,7 @@ gem 'google_custom_search_api'
 gem 'google-api-client', '~> 0.34', :require => 'google/apis/customsearch_v1'
 gem 'devise'
 gem "aws-sdk-s3", require: false
+gem 'gretel'
 
 group :production do
   gem 'unicorn', '5.4.1'
