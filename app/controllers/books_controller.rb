@@ -60,17 +60,22 @@ class BooksController < ApplicationController
     url = URI.parse("https://api.a3rt.recruit-tech.co.jp/text_summarization/v1")
     separation = "。"
     line_count = get_line_count(sentence, separation)
+    
+    # 文章数が1つの場合APIがエラーを出す
     if line_count <= 1
       return [sentence]
     end
+
     post_data = { 
       'apikey' => ENV["A3RT_API_KEY"],
       'sentences' => sentence,
       'linenumber' => 1,
       'separation' => separation
     }
+
     res = post_request(url, post_data, true);
     return nil if res.code != "200"
+
     result = JSON.parse(res.body)
     return result['summary']
   end
@@ -82,6 +87,7 @@ class BooksController < ApplicationController
   def post_request(url, data, use_ssl = true) 
     req = Net::HTTP::Post.new(url.request_uri)
     req.set_form_data(data)
+    
     Net::HTTP.start(url.host, url.port, 
       :use_ssl => use_ssl, 
       :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
