@@ -45,6 +45,22 @@
 
 .link-to {
   text-decoration: none;
-  color: black;
+  color: blue;
   font-size: 25px;
+}
+
+/* breadcrumbs */
+.breadcrumbs {
+  margin-top: 20px;
+  text-align: center;
+  color: black;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: blue;
+}
+
+.breadcrumbs span {
+  font-weight: bold;
 }
