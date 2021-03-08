@@ -14,3 +14,8 @@ crumb :pages do
   link "ページ", book_page_path
   parent :books
 end
+
+crumb :searches do
+  link "検索画面"
+  parent :pages
+end
