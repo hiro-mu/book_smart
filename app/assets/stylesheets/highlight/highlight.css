@@ -1,5 +1,14 @@
 .highlight-index {
   text-align: center;
+  padding: 10px;
+  font-size: 40px;
+}
+
+.highlight-content-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 25px;
 }
 
 .highlight-contents {
@@ -10,7 +19,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  
 }
 
 .highlight-text {
