@@ -51,6 +51,10 @@ ul {
   transform:translateX(-50%);
 }
 
+.highlight-bar {
+  text-align: center;
+  padding-top: 20px;
+}
 .new-book-bar {
   text-align: center;
   padding-top: 20px;

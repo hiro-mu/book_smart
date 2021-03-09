@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+<div class="highlight-contents">
+  <div class="highlight-index">
+    あなたのハイライト一覧
+  </div>
+  <div class="highlight-content-list">
+    <div class="highlight-text">
+      ハイライト
+    </div>
+    <div class="highlight-title">
+      本のタイトル
+    </div>
+    <div class="highlight-page">
+      ページ
+    </div>
+  </div>
+  <% @highlights.each do |highlight| %>
+  <div class="highlight-content">
+    <div class="highlight-text">
+      「<%= highlight.text %>」
+    </div>
+        <div class="highlight-title">
+      <%= highlight.book.title %>
+    </div>
+    <div class="highlight-page">
+      <%= highlight.pagenum %>ページ
+    </div>
+  </div>
+  <% end %>
+</div>

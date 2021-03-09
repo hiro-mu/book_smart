@@ -1,0 +1,38 @@
+.highlight-index {
+  text-align: center;
+  padding: 10px;
+  font-size: 40px;
+}
+
+.highlight-content-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.highlight-contents {
+  width: 70vw;
+  margin:0 auto;
+}
+.highlight-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.highlight-text {
+  width:50%;
+}
+
+.highlight-page {
+  margin-left: 10%;
+  width: 20%;
+  text-align: right;
+}
+
+.highlight-title {
+  width:20%;
+  text-align: right;
+}
+
