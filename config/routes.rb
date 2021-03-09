@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     resources :bookmarks, only: [:create, :update]
   end
+  resources :highlights, only: [:index]
   get 'highlights/create', to: 'highlights#create'
   get 'highlights/load', to: 'highlights#load'
   get 'highlights/delete', to: 'highlights#delete'

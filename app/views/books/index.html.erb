@@ -24,6 +24,9 @@
       <% end %>
     </ul>
     <% if user_signed_in? %>
+      <div class="highlight-bar">
+        <%= link_to "あなたのハイライト", highlights_path, class:"link-to" %>
+      </div>
       <div class="new-book-bar">
         <%= link_to "本追加", new_book_path, class:"link-to" %> 
       </div>

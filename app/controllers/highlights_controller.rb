@@ -1,6 +1,9 @@
 class HighlightsController < ApplicationController
-  before_action :move_to_index, except: [:load]
+  before_action :move_to_index, except: [:index, :load]
   
+  def index
+  end
+
   def load
     items = Highlight.pluck(:text)
     render json: { post: items }
