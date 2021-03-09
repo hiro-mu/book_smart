@@ -1,7 +1,20 @@
-あなたのハイライト一覧
 
-<% @highlights.each do |highlight| %>
-  <%= highlight.text %>
-  <%= highlight.pagenum %>
-  <%= highlight.book.title %>
-<% end %>
+
+<div class="highlight-contents">
+  <div class="highlight-index">
+    あなたのハイライト一覧
+  </div>
+  <% @highlights.each do |highlight| %>
+  <div class="highlight-content">
+    <div class="highlight-text">
+      「<%= highlight.text %>」
+    </div>
+        <div class="highlight-title">
+      <%= highlight.book.title %>
+    </div>
+    <div class="highlight-page">
+      <%= highlight.pagenum %>ページ
+    </div>
+  </div>
+  <% end %>
+</div>
