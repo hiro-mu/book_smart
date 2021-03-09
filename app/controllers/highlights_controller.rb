@@ -2,6 +2,7 @@ class HighlightsController < ApplicationController
   before_action :move_to_index, except: [:index, :load]
   
   def index
+    @highlights = current_user.highlights
   end
 
   def load

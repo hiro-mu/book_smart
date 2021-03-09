@@ -1,1 +1,7 @@
 あなたのハイライト一覧
+
+<% @highlights.each do |highlight| %>
+  <%= highlight.text %>
+  <%= highlight.pagenum %>
+  <%= highlight.book.title %>
+<% end %>
