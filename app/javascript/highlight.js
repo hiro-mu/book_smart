@@ -20,7 +20,7 @@ const highlight = () => {
     for (let i=0, len=item.length; i<len; i++){
       const txt = document.getElementById('page-text-content').innerHTML;
       const replaceTxt = txt.replaceAll(item[i],
-          `<span style="background-color:#FFF450", class="highlight-text">${item[i]}<a href="/books/${bookId}/pages/${pageNum}/search?search=${item[i]}", class="search-btn">
+          `<span style="background-color:#FFF450", class="highlight-text", id="highlight-text">${item[i]}<a href="/books/${bookId}/pages/${pageNum}/search?search=${item[i]}", class="search-btn">
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AA
           ADy0lEQVRYR7WWXWgcVRTH/2e29MEv9EHrB4hYPyCyd1Mtmp1pbFXwQYmo2TttqS/2xRerFPoQFTEB
           jYrogx8PKmKEFurMVqF99KNVuzdRWrozixbtgh8PjRURNYKQZubITDKbmc3M7mTN3re55+t3zz3nzi
@@ -45,7 +45,7 @@ const highlight = () => {
   }
 
   // ハイライトの追加
-  $('.page-text-content').on('mouseup', function(){
+  document.getElementById('page-text-content').addEventListener('mouseup',function(){
     let selectedStr;
     if(window.getSelection){
       selectedStr = window.getSelection().toString().trim();
@@ -59,12 +59,14 @@ const highlight = () => {
   });
 
   // ハイライトの削除
-  $(document).on('click', '.highlight-text', function(){
-    let clickedStr = $(this).text();
+  document.addEventListener('click', function(event){
+    if (event.target.id === "highlight-text") {
+    let clickedStr = event.target.textContent;
     const XHR = new XMLHttpRequest();
     XHR.open("GET", `/highlights/delete?book_id=${bookId}&pagenum=${pageNum}&text=${clickedStr}`, true);
     XHR.send();
     window.location.reload();
+    }
   });
 };
 
