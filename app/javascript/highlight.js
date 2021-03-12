@@ -18,7 +18,7 @@ const highlight = () => {
     }
     const item = XHR.response.post;
     for (let i=0, len=item.length; i<len; i++){
-      const txt = $('.page-text-content').html();
+      const txt = document.getElementById('page-text-content').innerHTML;
       $('.page-text-content').html(
         txt.replaceAll(item[i],
             `<span style="background-color:#FFF450", class="highlight-text">${item[i]}<a href="/books/${bookId}/pages/${pageNum}/search?search=${item[i]}", class="search-btn">
